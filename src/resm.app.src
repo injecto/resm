@@ -1,0 +1,18 @@
+{application, resm,
+  [{description, "Simple resource manager that provides resources on demand"},
+    {vsn, "1.0.0"},
+    {registered, []},
+    {mod, {resm_app, []}},
+    {applications,
+      [kernel,
+        stdlib,
+        cowboy,
+        jsx
+      ]},
+    {env, []},
+    {modules, []},
+
+    {maintainers, []},
+    {licenses, []},
+    {links, []}
+  ]}.
