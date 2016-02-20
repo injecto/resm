@@ -20,10 +20,11 @@ start_link() ->
 %%====================================================================
 
 init([]) ->
+  {ok, ResourceNum} = application:get_env(resm, resource_num),
   {ok, {#{}, [
     #{
       id => req_handler,
-      start => {req_handler, start_link, []},
+      start => {req_handler, start_link, [ResourceNum]},
       modules => [req_handler]
     }
   ]}}.
