@@ -2,8 +2,6 @@
 
 -behaviour(application).
 
--define(PORT, 8888).
-
 %% Application callbacks
 -export([start/2
   , stop/1]).
@@ -23,7 +21,8 @@ start(_StartType, _StartArgs) ->
       {'_', http_handler, bad_req}
     ]}
   ]),
-  {ok, _} = cowboy:start_http(listener, 100, [{port, ?PORT}],
+  {ok, Port} = application:get_env(resm, service_port),
+  {ok, _} = cowboy:start_http(listener, 100, [{port, Port}],
     [{env, [{dispatch, Dispatch}]}]),
 
   {ok, _} = resm_sup:start_link().

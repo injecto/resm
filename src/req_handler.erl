@@ -6,8 +6,6 @@
 -export([allocate/1, deallocate/1, list/0, list/1, reset/0]).
 -export([init/1, handle_call/3, terminate/2, code_change/3, handle_info/2, handle_cast/2]).
 
--define(RESOURCES_NUM, 3).
-
 -define(SERVER, ?MODULE).
 
 %%%===================================================================
@@ -41,7 +39,8 @@ init([]) ->
   {ok, #{allocated => #{}, deallocated => populate()}}.
 
 populate() ->
-  lists:seq(0, ?RESOURCES_NUM - 1).
+  {ok, N} = application:get_env(resm, resource_num),
+  lists:seq(0, N - 1).
 
 handle_call({alloc, User}, _From, #{allocated := A, deallocated := [Res | T]} = Pool) ->
   {reply, Res, Pool#{allocated := A#{Res => User}, deallocated := T}};

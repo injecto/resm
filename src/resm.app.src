@@ -9,7 +9,10 @@
         cowboy,
         jsx
       ]},
-    {env, []},
+    {env, [
+      {service_port, 8888},
+      {resource_num, 3}
+    ]},
     {modules, []},
 
     {maintainers, []},
