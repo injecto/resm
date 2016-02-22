@@ -1,0 +1,9 @@
+Package: resm
+Version: 1.0-0
+Maintainer: Vladimir Glushenkov <injecto.wg@gmail.com>
+Section: misc
+Priority: optional
+Architecture: amd64
+Description: simple resource manager
+  Simple resource manager that provides resources on demand
+
